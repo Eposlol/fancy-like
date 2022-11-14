@@ -1,0 +1,75 @@
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `gallery_title` text NOT NULL,
+  `text` text NOT NULL,
+  `omg` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `rating_info` (
+  `user_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `rating_action` varchar(30) NOT NULL,
+   CONSTRAINT UC_rating_info UNIQUE (user_id, post_id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE like.posts MODIFY COLUMN gallery_item VARCHAR(255)  
+    CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;
+
+ALTER TABLE like.posts  MODIFY COLUMN text VARCHAR(255)  
+    CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;
+
+INSERT INTO `posts` (`id`, `gallery_title`, `text`, `img`) VALUES
+(1, 'Архитектура' , 'Архитектура Turandot Residences', '/gallery/images/AX8A8193-HDR.jpg'),
+(2, '' , 'Архитектура Turandot Residences', '/gallery/images/AX8A8244-HDR.jpg'),
+(3, '' , 'Архитектура Turandot Residences', '/gallery/images/DIA_9438.jpg'),
+(4, '' , 'Архитектура Turandot Residences', '/gallery/images/AX8A8307-HDR.jpg'),
+(5, '' , 'Архитектура Turandot Residences', '/gallery/images/AX8A8676-HDR.jpg'),
+(6, '' , 'Архитектура Turandot Residences', '/gallery/images/AX8A8682-HDR.jpg'),
+(7, '' , 'Архитектура Turandot Residences', '/gallery/images/AX8A8880.jpg'),
+(8, '' , 'Архитектура Turandot Residences', '/gallery/images/DIA_2188.jpg'),
+(9, '' , 'Архитектура Turandot Residences', '/gallery/images/arh.jpg'),
+(10, '' , 'Архитектура Turandot Residences', '/gallery/images/AX8A8871.jpg'),
+(11, '' , 'Архитектура Turandot Residences', '/gallery/images/IMG_9149-HDR-edit.jpg'),
+(12, '' , 'Архитектура Turandot Residences', '/gallery/images/IMG_9173-HDR.jpg'),
+(13, '' , 'Архитектура Turandot Residences', '/gallery/images/IMG_9230-HDR.jpg'),
+(14, '' , 'Архитектура Turandot Residences', '/gallery/images/IMG_9242-HDR.jpg'),
+(15, '' , 'Архитектура Turandot Residences', '/gallery/images/IMG_9263-HDR.jpg'),
+(16, '' , 'Архитектура Turandot Residences', '/gallery/images/IMG_9302-HDR.jpg'),
+(17, 'Окружение' , 'Пентхаусы Turandot Residences', '/gallery/images/surround/DIA_1871.jpg'),
+(18, '' , 'Пентхаусы Turandot Residences', '/gallery/images/surround/DIA_1877.jpg'),
+(19, '' , 'Пентхаусы Turandot Residences', '/gallery/images/surround/DIA_1867.jpg'),
+(20, '' , 'Пентхаусы Turandot Residences', '/gallery/images/surround/DIA_1848.jpg'),
+(21, '' , 'Пентхаусы Turandot Residences', '/gallery/images/surround/sur1.jpg'),
+(22, '' , 'Пентхаусы Turandot Residences', '/gallery/images/surround/sur2.jpg'),
+(23, '' , 'Пентхаусы Turandot Residences', '/gallery/images/surround/sur3.jpg'),
+(24, '' , 'Пентхаусы Turandot Residences', '/gallery/images/surround/sur4.jpg'),
+(25, '' , 'Пентхаусы Turandot Residences', '/gallery/images/IMG_9344-HDR.jpg'),
+(26, '' , 'Пентхаусы Turandot Residences', '/gallery/images/IMG_9350-HDR.jpg'),
+(27, 'Пентхаусы' , 'Пентхаусы Turandot Residences', '/gallery/images/penthouse/TERRACE_comp01_v10.jpg'),
+(28, '' , 'Пентхаусы Turandot Residences', '/gallery/images/penthouse/ph1.jpg'),
+(29, '' , 'Пентхаусы Turandot Residences', '/gallery/images/penthouse/ph2.jpg'),
+(30, '' , 'Пентхаусы Turandot Residences', '/gallery/images/penthouse/Turandot_project_View010000.jpg'),
+(31, '' , 'Пентхаусы Turandot Residences', '/gallery/images/penthouse/Turandot_project_View020000.jpg'),
+(32, '' , 'Пентхаусы Turandot Residences', '/gallery/images/penthouse/Turandot_project_View030000.jpg'),
+(33, 'Интерьеры' , 'Интерьеры Turandot Residences', '/gallery/images/interior/DIA_9695.jpg'),
+(34, '' , 'Интерьеры Turandot Residences', '/gallery/images/interior/2.jpg'),
+(35, '' , 'Интерьеры Turandot Residences', '/gallery/images/interior/4B1A8393.jpg'),
+(36, '' , 'Интерьеры Turandot Residences', '/gallery/images/interior/4B1A8508.jpg'),
+(37, '' , 'Интерьеры Turandot Residences', '/gallery/images/interior/4B1A8526.jpg'),
+(38, '' , 'Интерьеры Turandot Residences', '/gallery/images/interior/4B1A8353.jpg'),
+(39, '' , 'Интерьеры Turandot Residences', '/gallery/images/AX8A8337-HDR.jpg'),
+(40, '' , 'Интерьеры Turandot Residences', '/gallery/images/interior/DIA_9737.jpg'),
+(41, '' , 'Интерьеры Turandot Residences', '/gallery/images/AX8A8430-HDR.jpg'),
+(42, '' , 'Интерьеры Turandot Residences', '/gallery/images/IMG_9148.jpg'),
+(43, '' , 'Интерьеры Turandot Residences', '/gallery/images/interior/DIA_9746.jpg'),
+(44, '' , 'Интерьеры Turandot Residences', '/gallery/images/AX8A8737.jpg'),
+(45, '' , 'Интерьеры Turandot Residences', '/gallery/images/AX8A8790-HDR.jpg'),
+(46, '' , 'Интерьеры Turandot Residences', '/gallery/images/AX8A8613-HDR.jpg'),
+(47, 'Шоу-рум' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8565-HDR.jpg'),
+(48, '' , 'Шоу-рум Turandot Residences', '/gallery/images/sr1.jpg'),
+(49, '' , 'Шоу-рум Turandot Residences', '/gallery/images/sr2.jpg'),
+(50, '' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8592-HDR.jpg'),
+(51, '' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8596-HDR.jpg'),
+(52, '' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8601-HDR.jpg'),
+(53, 'Паркинг' , 'Паркинг Turandot Residences', '/gallery/images/AX8A8893.jpg'),
+(54, '' , 'Паркинг Turandot Residences', '/gallery/images/IMG_9371-HDR.jpg')
