@@ -1,80 +1,26 @@
 <?php 
-// connect to database
+// mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $conn = mysqli_connect('localhost', 'root', '', 'like');
-
-// get ip function
-// function getClientIP():string
-// {
-//     $keys=array('HTTP_CLIENT_IP','HTTP_X_FORWARDED_FOR','HTTP_X_FORWARDED','HTTP_FORWARDED_FOR','HTTP_FORWARDED','REMOTE_ADDR');
-//     foreach($keys as $k)
-//     {
-//         if (!empty($_SERVER[$k]) && filter_var($_SERVER[$k], FILTER_VALIDATE_IP))
-//         {
-//             return $_SERVER[$k];
-//         }
-//     }
-//     return "UNKNOWN";
-// }
-
-// lets assume a user is logged in with id $user_id
-
-
 if (!$conn) {
   die("Error connecting to database: " . mysqli_connect_error($conn));
   exit();
 } 
-//else { 
 
-//   $ip = filter_var(
-//     array_map("trim", 
-//         explode("," ,
-//             $_SERVER['HTTP_CLIENT_IP']??
-//             $_SERVER['HTTP_X_FORWARDED_FOR']??
-//             $_SERVER['HTTP_X_FORWARDED']??
-//             $_SERVER['HTTP_FORWARDED_FOR']??
-//             $_SERVER['HTTP_FORWARDED']??
-//             $_SERVER['REMOTE_ADDR']
-//         )
-//     )[0],
-//   FILTER_VALIDATE_IP);
-// $ip = $ip!=""?$ip:"Invalid IP";
-// echo $ip;
+  $ip = $_SERVER['REMOTE_ADDR'];
+  $ip_query = "SELECT `id` FROM uniq_user WHERE user_ip = ('$ip')";
+  $res_ip_query = mysqli_query($conn, $ip_query);
+  $result = mysqli_fetch_array($res_ip_query);
+ if(isset($result)) {
+  $user_id = $result[0];
+ } else {
+  $push_ip_query = "REPLACE INTO uniq_user(user_ip) VALUES ('$ip')";
+  $get_ip_query = "SELECT id FROM uniq_user WHERE user_ip=('$ip')";
+  $res_push = mysqli_query($conn, $push_ip_query);
+  $res_get = mysqli_query($conn, $get_ip_query);
+  $result_long = mysqli_fetch_array($res_get);
+   $user_id = $result_long[0];
+ }
 
-  // global $conn;
-  //  $sql = "INSERT INTO unique_user VALUES (id, INET6_ATON('".$_SERVER['REMOTE_ADDR']."'))"; 
-  // $result = mysqli_query($conn, $sql);
-  // mysql_query($conn, $sql);
-    // $sql = "INSERT INTO unique_user (id, user_ip) 
-    //         VALUES (id, INET6_ATON('".$_SERVER['REMOTE_ADDR']."'))";
-    // $result = mysqli_query($conn, $sql);
-    
-//}
-
-
-
-
-// function getUser() {
-//   global $conn;
-//   $sql="SELECT id FROM `unique_user` where user_ip = $ip";
-//   $rs = mysqli_query($conn, $sql);
-//   $result = mysqli_fetch_array($rs);
-//   return $user_id;
-// }
-
-
-$ip = $_SERVER['REMOTE_ADDR'];
-$query = "insert into IP(IP) values ('$ip')";
-$res = mysql_query($query);
-if($res)
-{
-echo "Ваш IP адрес успешно добавлен в БД!";
-}
-else
-{
-echo "IP не добавлен!";
-}
-$user_id = 4;
-// клик лайк или дизлайк
 if (isset($_POST['action'])) {
   $post_id = $_POST['post_id'];
   $action = $_POST['action'];
@@ -98,8 +44,6 @@ if (isset($_POST['action'])) {
   	default:
   		break;
   }
-
-  // execute query to effect changes in the database ...
   mysqli_query($conn, $sql);
   echo getRating($post_id);
   exit(0);
