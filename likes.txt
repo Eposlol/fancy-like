@@ -2,8 +2,15 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `gallery_title` text NOT NULL,
   `text` text NOT NULL,
-  `omg` text NOT NULL
+  `img` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `user_id` (
+`ID` INT NOT NULL AUTO_INCREMENT ,
+`IP` varchar(25) NOT NULL ,
+PRIMARY KEY ( `ID` ) 
+) ENGINE = MYISAM ;
 
 CREATE TABLE `rating_info` (
   `user_id` int(11) NOT NULL,
@@ -12,7 +19,12 @@ CREATE TABLE `rating_info` (
    CONSTRAINT UC_rating_info UNIQUE (user_id, post_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE like.posts MODIFY COLUMN gallery_item VARCHAR(255)  
+CREATE TABLE `unique_user` (
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `user_ip` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE like.posts MODIFY COLUMN gallery_title VARCHAR(255)  
     CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;
 
 ALTER TABLE like.posts  MODIFY COLUMN text VARCHAR(255)  

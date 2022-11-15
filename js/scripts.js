@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-    // if the user clicks on the like button ...
     $('body').on('click', '.like-btn', function(){
       var post_id = $(this).data('id');
       $clicked_btn = $(this);
@@ -25,18 +24,15 @@ $(document).ready(function(){
                   $clicked_btn.removeClass('fa-thumbs-up');
                   $clicked_btn.addClass('fa-thumbs-o-up');
               }
-              // display the number of likes and dislikes
+              // кол-во лайков-дизлайков
               $clicked_btn.siblings('span.likes').text(res.likes);
               $clicked_btn.siblings('span.dislikes').text(res.dislikes);
-    
-              // change button styling of the other button if user is reacting the second time to post
+              // стиль кнопки
               $clicked_btn.siblings('i.fa-thumbs-down').removeClass('fa-thumbs-down').addClass('fa-thumbs-o-down');
           }
       });		
-    
     });
     
-    // if the user clicks on the dislike button ...
     $('body').on('click', '.dislike-btn', function(){
       var post_id = $(this).data('id');
       $clicked_btn = $(this);
@@ -61,11 +57,8 @@ $(document).ready(function(){
                   $clicked_btn.removeClass('fa-thumbs-down');
                   $clicked_btn.addClass('fa-thumbs-o-down');
               }
-              // display the number of likes and dislikes
               $clicked_btn.siblings('span.likes').text(res.likes);
               $clicked_btn.siblings('span.dislikes').text(res.dislikes);
-              
-              // change button styling of the other button if user is reacting the second time to post
               $clicked_btn.siblings('i.fa-thumbs-up').removeClass('fa-thumbs-up').addClass('fa-thumbs-o-up');
           }
       });	
