@@ -1,6 +1,15 @@
 <?php 
 // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-$conn = mysqli_connect('localhost', 'root', '', 'like');
+
+function db () {
+  static $conn;
+  if ($conn===NULL){ 
+      $conn = mysqli_connect ("localhost", "root", "", "like");
+  }
+  return $conn;
+}
+$conn = db();
+// $conn = mysqli_connect('localhost', 'root', '', 'like');
 if (!$conn) {
   die("Error connecting to database: " . mysqli_connect_error($conn));
   exit();
@@ -52,7 +61,7 @@ if (isset($_POST['action'])) {
 // всего лайков
 function getLikes($id)
 {
-  global $conn;
+ $conn = db();
   $sql = "SELECT COUNT(*) FROM rating_info 
   		  WHERE post_id = $id AND rating_action='like'";
   $rs = mysqli_query($conn, $sql);
@@ -63,7 +72,7 @@ function getLikes($id)
 //  всего дизлайков
 function getDislikes($id)
 {
-  global $conn;
+  $conn = db();
   $sql = "SELECT COUNT(*) FROM rating_info 
   		  WHERE post_id = $id AND rating_action='dislike'";
   $rs = mysqli_query($conn, $sql);
@@ -74,7 +83,7 @@ function getDislikes($id)
 // лайки и дизлайки конкретного фото
 function getRating($id)
 {
-  global $conn;
+  $conn = db();
   $rating = array();
   $likes_query = "SELECT COUNT(*) FROM rating_info WHERE post_id = $id AND rating_action='like'";
   $dislikes_query = "SELECT COUNT(*) FROM rating_info 
@@ -93,7 +102,7 @@ function getRating($id)
 // проверка лайкал ли пост пользователь
 function userLiked($post_id)
 {
-  global $conn;
+  $conn = db();
   global $user_id;
   $sql = "SELECT * FROM rating_info WHERE user_id=$user_id 
   		  AND post_id=$post_id AND rating_action='like'";
@@ -108,7 +117,7 @@ function userLiked($post_id)
 // проверка дизлайкал ли пост пользователь
 function userDisliked($post_id)
 {
-  global $conn;
+  $conn = db();
   global $user_id;
   $sql = "SELECT * FROM rating_info WHERE user_id=$user_id 
   		  AND post_id=$post_id AND rating_action='dislike'";
