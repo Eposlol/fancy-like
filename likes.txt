@@ -19,12 +19,6 @@ CREATE TABLE `rating_info` (
    CONSTRAINT UC_rating_info UNIQUE (user_id, post_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE like.posts MODIFY COLUMN gallery_title VARCHAR(255)  
-    CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;
-
-ALTER TABLE like.posts  MODIFY COLUMN text VARCHAR(255)  
-    CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;
-
 INSERT INTO `posts` (`id`, `gallery_title`, `text`, `img`) VALUES
 (1, 'Архитектура' , 'Архитектура Turandot Residences', '/gallery/images/AX8A8193-HDR.jpg'),
 (2, '' , 'Архитектура Turandot Residences', '/gallery/images/AX8A8244-HDR.jpg'),
@@ -75,8 +69,11 @@ INSERT INTO `posts` (`id`, `gallery_title`, `text`, `img`) VALUES
 (47, 'Шоу-рум' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8565-HDR.jpg'),
 (48, '' , 'Шоу-рум Turandot Residences', '/gallery/images/sr1.jpg'),
 (49, '' , 'Шоу-рум Turandot Residences', '/gallery/images/sr2.jpg'),
-(50, '' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8592-HDR.jpg'),
-(51, '' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8596-HDR.jpg'),
-(52, '' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8601-HDR.jpg'),
-(53, 'Паркинг' , 'Паркинг Turandot Residences', '/gallery/images/AX8A8893.jpg'),
-(54, '' , 'Паркинг Turandot Residences', '/gallery/images/IMG_9371-HDR.jpg')
+(50, '' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8589-HDR.jpg'),
+(51, '' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8592-HDR.jpg'),
+(52, '' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8596-HDR.jpg'),
+(53, '' , 'Шоу-рум Turandot Residences', '/gallery/images/AX8A8601-HDR.jpg'),
+(54, 'Паркинг' , 'Паркинг Turandot Residences', '/gallery/images/AX8A8893.jpg'),
+(55, '' , 'Паркинг Turandot Residences', '/gallery/images/IMG_9371-HDR.jpg')
+
+
