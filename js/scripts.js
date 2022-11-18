@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $('body').on('click', '.like-btn', function(){
-      var post_id = $(this).data('id');
+      const post_id = $(this).data('id');
       $clicked_btn = $(this);
       if ($clicked_btn.hasClass('fa-thumbs-o-up')) {
           action = 'like';
@@ -34,7 +34,7 @@ $(document).ready(function(){
     });
     
     $('body').on('click', '.dislike-btn', function(){
-      var post_id = $(this).data('id');
+      const post_id = $(this).data('id');
       $clicked_btn = $(this);
       if ($clicked_btn.hasClass('fa-thumbs-o-down')) {
           action = 'dislike';

@@ -3,7 +3,7 @@ CREATE TABLE `posts` (
   `gallery_title` text NOT NULL,
   `text` text NOT NULL,
   `img` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `uniq_user` (
